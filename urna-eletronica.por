@@ -7,7 +7,7 @@ programa
 		inteiro numeroCandidato,numeroTotalVotos, votoInvalido
 
 		real soma
-		real percentualC1,percentualC2,percentualC3
+		real percentualC1,percentualC2,percentualC3,percentualVotoB
 		logico encerraVotacao = falso
 	
 		
@@ -64,16 +64,16 @@ programa
 		}
 		se ( candidato1 > candidato2 e candidato1 > candidato3){
 			candidato1 = candidato1 + votoBranco
-			escreva (" CANDIDATO 1 GANHOU! ", candidato1 , " ","votos")
+			escreva (" CANDIDATO 1 GANHOU com ", candidato1 , " ","votos \n")
 			
 		}
 		senao se ( candidato2 > candidato1 e candidato2 > candidato3){
 			candidato2 = candidato2 + votoBranco
-			escreva ("CANDIDATO 2 GANHOU! " , candidato2 , " ","votos")
+			escreva ("CANDIDATO 2 GANHOU com " , candidato2 , " ","votos \n")
 		}
 		senao se (candidato3 > candidato2 e candidato3 > candidato1){
 			candidato3 = candidato3 + votoBranco
-		     escreva ("CANDIDATO 3 GANHOU! ", candidato3 , " ","votos")		
+		     escreva ("CANDIDATO 3 GANHOU com ", candidato3 , " ","votos \n")		
 
 		}
 		senao se ( candidato1 == candidato2 e candidato1 ==candidato3 e candidato2 == candidato3) {
@@ -83,15 +83,19 @@ programa
  		percentualC1 = (candidato1/soma)*100
  		percentualC2 = (candidato2/soma)*100
  		percentualC3 = (candidato3/soma)*100
+ 		percentualVotoB = (votoBranco/soma)*100
  		
  		candidato1 = percentualC1
- 		escreva ("Candidato 1 ", candidato1," "," % " )
+ 		escreva ("Candidato 1 ficou com ", candidato1," "," %" , " dos votos \n" )
  		
  		candidato2 = percentualC2
- 		escreva ("Candidato 2 ",candidato2," "," % " )
+ 		escreva ("Candidato 2 ficou com ",candidato2," "," %" , " dos votos \n" )
 
  		candidato3 = percentualC3
- 		escreva ("Candidato 3 ",candidato3," "," % " )
+ 		escreva ("Candidato 3 ficou com ",candidato3," "," %" , " dos votos \n" )
+
+ 		votoBranco = percentualVotoB
+ 		escreva ("Votos em Branco com ",votoBranco," "," %" , " dos votos \n" )
  		
 }			
 }
@@ -100,7 +104,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2242; 
+ * @POSICAO-CURSOR = 2515; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
