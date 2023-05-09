@@ -25,8 +25,8 @@ programa
 		leia(nomeCandidato3)
 		limpa()
 
-		
-		enquanto (nao encerraVotacao ) {
+		faca
+		 {
 			escreva("Digite o numero do candidato: ")
 	 		leia(numeroCandidato)
 	 		
@@ -76,12 +76,9 @@ programa
 				
 				caso contrario:
 				escreva("Voto invalido \n")
-				pare
-						
+				pare			
 	 		}
- 			
-		
-		}
+		}enquanto (nao encerraVotacao )
 
 		//DETERMINA O GANHADOR
 		se ( candidato1 > candidato2 e candidato1 > candidato3){
@@ -126,7 +123,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1711; 
+ * @POSICAO-CURSOR = 1675; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
