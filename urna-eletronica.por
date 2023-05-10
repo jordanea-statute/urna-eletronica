@@ -1,8 +1,9 @@
 programa
 {
-	inclua biblioteca Sons
 	
-	   inclua biblioteca Matematica --> mat
+	inclua biblioteca Sons
+	inclua biblioteca Util
+	inclua biblioteca Matematica --> mat
 	   
 	funcao inicio()
 	{
@@ -14,9 +15,9 @@ programa
 		real soma
 		real percentualC1,percentualC2,percentualC3,percentualVotoB
 		
-		logico encerraVotacao = falso
+		logico encerraVotacao = falso, confirmaVotacao = falso
 		
-		caracter confirmaEncerramento = 'N'
+		caracter confirmaEncerramento = 'N', confirmaVoto = 'N'
 
 		escreva ("Coloque o nome do Candidato 1: ") 
 		leia(nomeCandidato1)
@@ -30,6 +31,12 @@ programa
 
 		faca
 		 {
+		 	escreva(" >> ELEIÇOES 2023 SEJAM BEM-VINDOS << \n")
+		 	escreva(" > Opções de voto < \n")
+		 	escreva(" 1 |", nomeCandidato1, "\n")
+			escreva(" 2 |", nomeCandidato2, "\n")
+		 	escreva(" 3 |", nomeCandidato3, "\n")
+		 	
 			escreva("Digite o numero do candidato: ")
 	 		leia(numeroCandidato)
 	 		
@@ -38,35 +45,44 @@ programa
 	 			caso 1:
 	 			candidato1++ /* ++ incrementa */
 	 			escreva("Candidato 1 recebeu um voto \n")
-	 			somConfirmacao()
+	 			escreva("DESEJA CONFIRMAR VOTAÇÃO? \n")
+	 			escreva("Digite S para 'SIM' ou N para 'NÃO' :")
+	 			leia(confirmaVoto)
+	 			
+				se (confirmaVoto == 's' ou confirmaVoto == 'S'){
+				confirmaVotacao = verdadeiro
+				escreva(" VOTO CONFIRMADO! \n")	
+				somConfirmacao(2)
+				}
+				 			
 	 			limpa()
 				pare
 						
 	 			caso 2:
 	 			candidato2++
 	 			escreva("Candidato 2 recebeu um voto \n")
-	 			somConfirmacao()
+	 			somConfirmacao(2)
 	 			limpa()
 				pare
 				
 				caso 3:
 				candidato3++
 	 			escreva("Candidato 3 recebeu um voto \n")
-	 			somConfirmacao()
+	 			somConfirmacao(2)
 	 			limpa()
 				pare
 				
 				caso 6:
 				votoBranco++
 				escreva("Voto em Branco \n")
-				somConfirmacao()
+				somConfirmacao(2)
 				limpa()
 				pare
 				
 				caso 9:
 				votoNulo++
 				escreva("Voto nulo \n")
-				somConfirmacao()
+				somConfirmacao(2)
 				limpa()
 				pare
 				
@@ -74,28 +90,24 @@ programa
 				escreva(">> DESEJA REALMENTE ENCERRAR A VOTAÇÃO? \n")
 				escreva(">> Digite S para 'SIM' ou N para 'NÂO' : ")
 	 			leia(confirmaEncerramento)
-	 			somConfirmacao()
+	 			somConfirmacao(4)
 
 	 			se (confirmaEncerramento == 's' ou confirmaEncerramento == 'S'){
 	 			encerraVotacao = verdadeiro
 	 			escreva(" VOTAÇÃO ENCERRADA! \n")
-	 			somConfirmacao()
 				pare
 				}
 				
 				caso contrario:
 				escreva("Voto invalido \n")
-				pare			
-	 		}
-	 		
-	 		
+				pare			                           
+	 		}	 		
 		}enquanto (nao encerraVotacao )
-
+				
 		//DETERMINA O GANHADOR
 		se ( candidato1 > candidato2 e candidato1 > candidato3){
 			candidato1 = candidato1 + votoBranco
-			escreva (" CANDIDATO 1 GANHOU com ", candidato1 , " ","votos \n")
-			
+			escreva (" CANDIDATO 1 GANHOU com ", candidato1 , " ","votos \n")			
 		}
 		senao se ( candidato2 > candidato1 e candidato2 > candidato3){
 			candidato2 = candidato2 + votoBranco
@@ -104,7 +116,6 @@ programa
 		senao se (candidato3 > candidato2 e candidato3 > candidato1){
 			candidato3 = candidato3 + votoBranco
 		     escreva ("CANDIDATO 3 GANHOU com ", candidato3 , " ","votos \n")		
-
 		}
 		senao se ( candidato1 == candidato2 e candidato1 ==candidato3 e candidato2 == candidato3) {
 			escreva (" Empate!") 
@@ -126,17 +137,18 @@ programa
 
  		votoBranco = percentualVotoB
  		escreva ("Votos em Branco com ",votoBranco," "," %" , " dos votos \n" )
- 		
+ 		somConfirmacao(4)
  		
 }//termino função inicio()
-	funcao vazio somConfirmacao()
+	funcao vazio somConfirmacao(inteiro tempoInformado)
 	{
-		inteiro tempoDeEsperaSom = 2000
+		inteiro tempoDeEsperaSom = tempoInformado *1000
 		inteiro somDeConfirmacao = Sons.carregar_som("audio/confirma-urna.mp3")
 
 		Sons.reproduzir_som(somDeConfirmacao, falso)
-		
+			
 	}//termino funcao somConfirmaçao
+	
 	
  // termino programa			
 }
@@ -145,9 +157,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1858; 
+ * @POSICAO-CURSOR = 512; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {candidato1, 10, 10, 10}-{candidato2, 10, 26, 10}-{candidato3, 10, 41, 10}-{numeroTotalVotos, 11, 26, 16};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
