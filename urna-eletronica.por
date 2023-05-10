@@ -1,6 +1,9 @@
 programa
 {
+	inclua biblioteca Sons
+	
 	   inclua biblioteca Matematica --> mat
+	   
 	funcao inicio()
 	{
 		inteiro candidato1 =0 , candidato2 =0 ,candidato3 = 0, votoNulo =0, votoBranco = 0	
@@ -35,30 +38,35 @@ programa
 	 			caso 1:
 	 			candidato1++ /* ++ incrementa */
 	 			escreva("Candidato 1 recebeu um voto \n")
+	 			somConfirmacao()
 	 			limpa()
 				pare
 						
 	 			caso 2:
 	 			candidato2++
 	 			escreva("Candidato 2 recebeu um voto \n")
+	 			somConfirmacao()
 	 			limpa()
 				pare
 				
 				caso 3:
 				candidato3++
 	 			escreva("Candidato 3 recebeu um voto \n")
+	 			somConfirmacao()
 	 			limpa()
 				pare
 				
 				caso 6:
 				votoBranco++
 				escreva("Voto em Branco \n")
+				somConfirmacao()
 				limpa()
 				pare
 				
 				caso 9:
 				votoNulo++
 				escreva("Voto nulo \n")
+				somConfirmacao()
 				limpa()
 				pare
 				
@@ -66,11 +74,12 @@ programa
 				escreva(">> DESEJA REALMENTE ENCERRAR A VOTAÇÃO? \n")
 				escreva(">> Digite S para 'SIM' ou N para 'NÂO' : ")
 	 			leia(confirmaEncerramento)
+	 			somConfirmacao()
 
 	 			se (confirmaEncerramento == 's' ou confirmaEncerramento == 'S'){
 	 			encerraVotacao = verdadeiro
 	 			escreva(" VOTAÇÃO ENCERRADA! \n")
-	 			
+	 			somConfirmacao()
 				pare
 				}
 				
@@ -78,6 +87,8 @@ programa
 				escreva("Voto invalido \n")
 				pare			
 	 		}
+	 		
+	 		
 		}enquanto (nao encerraVotacao )
 
 		//DETERMINA O GANHADOR
@@ -116,14 +127,25 @@ programa
  		votoBranco = percentualVotoB
  		escreva ("Votos em Branco com ",votoBranco," "," %" , " dos votos \n" )
  		
-}			
+ 		
+}//termino função inicio()
+	funcao vazio somConfirmacao()
+	{
+		inteiro tempoDeEsperaSom = 2000
+		inteiro somDeConfirmacao = Sons.carregar_som("audio/confirma-urna.mp3")
+
+		Sons.reproduzir_som(somDeConfirmacao, falso)
+		
+	}//termino funcao somConfirmaçao
+	
+ // termino programa			
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1675; 
+ * @POSICAO-CURSOR = 1858; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
